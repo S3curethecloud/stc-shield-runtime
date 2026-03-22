@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STC Shield — SecureTheCloud</title>
+
+  <!-- Production CSS -->
+  <link rel="stylesheet" href="assets/css/shield.css" />
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">🛡️ SecureTheCloud</div>
+      <div>
+        <a href="#">Home</a>
+        <a href="#" class="active">Shield</a>
+        <a href="#">AI</a>
+        <a href="#">Labs</a>
+        <a href="#">Consulting</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>STC Shield</h1>
+      <p class="subtitle">
+        Multi-cloud identity attack-path detection. Model how attackers move through trust — before they do.
+      </p>
+
+      <div class="button-group">
+        <a class="btn primary" href="#">Launch Shield Console</a>
+        <a class="btn secondary btn-riskdna" href="#">Launch RiskDNA</a>
+        <a class="btn secondary" href="#">Request Demo</a>
+      </div>
+
+      <p class="muted" style="margin-top: 12px;">
+        Live identity risk view. Read-only by design. No automated remediation.
+      </p>
+    </section>
+
+    <!-- COPILOT -->
+    <section class="section contrast">
+      <h2>Copilot</h2>
+      <p class="subtitle">
+        Deterministic identity analysis with AI-assisted explanations — without modifying system state.
+      </p>
+
+      <div class="card">
+        <h3>Copilot Response</h3>
+        <p class="muted">
+          This identity path demonstrates cross-cloud trust traversal from Azure Entra ID into AWS via federated role with insufficient conditions.
+        </p>
+      </div>
+    </section>
+
+    <!-- SHIELD RISK -->
+    <section class="section">
+      <h2>Shield Attack Path Visualization</h2>
+      <p class="muted">Status: Active correlation from SIEM</p>
+
+      <div class="card" style="margin-top: 16px;">
+
+        <h3>Risk Score: 92</h3>
+
+        <div style="margin-top: 16px;">
+          <button class="btn secondary" onclick="toggleWhy()" aria-expanded="false" id="why-toggle">
+            Why this score?
+          </button>
+        </div>
+
+        <div id="why-box" class="card hidden" style="margin-top: 16px;">
+          <p><strong>After-hours activity</strong> : 02:14 AM refund <span style="float:right;">+25</span></p>
+          <p><strong>High-value transaction</strong> : $9,000 refund <span style="float:right;">+40</span></p>
+          <p><strong>New device fingerprint</strong> : Unrecognized browser <span style="float:right;">+27</span></p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FINDINGS -->
+    <section class="section contrast">
+      <h2>Shield Findings</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>HIGH — Cross-account role escalation</h3>
+          <p>AWS IAM role reachable via Azure federation</p>
+        </div>
+
+        <div class="card">
+          <h3>MEDIUM — Stale service account</h3>
+          <p>Unused GCP identity reachable from CI</p>
+        </div>
+
+        <div class="card">
+          <h3>LOW — Over-permissive read</h3>
+          <p>Broad S3 access across multiple accounts</p>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top: 12px;">
+        Findings are computed deterministically from identity graphs.
+      </p>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="section">
+      <h2>STC Shield Architecture</h2>
+
+      <div class="card">
+        <p>
+          Identity ingestion → attack-path modeling → operator visualization → AI-augmented reasoning.
+        </p>
+
+        <p class="muted" style="margin-top: 8px;">
+          AI explains results. Shield computes truth. System state is never modified.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Active datasets: Labs Inventory · SIEM Dataset · Shield Graph · Voice Intelligence</p>
+    <p class="muted">Deterministic · No Web · Audited</p>
+    <p>© SecureTheCloud — Multi-Cloud Architecture Intelligence Platform</p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    function toggleWhy() {
+      const box = document.getElementById("why-box");
+      const btn = document.getElementById("why-toggle");
+
+      const isHidden = box.classList.toggle("hidden");
+      btn.setAttribute("aria-expanded", !isHidden);
+    }
+  </script>
+
+</body>
+</html>
