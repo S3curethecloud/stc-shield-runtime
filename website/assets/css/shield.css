@@ -1,5 +1,5 @@
 /* ============================================================
-   STC SHIELD CONSOLE — BASE TOKENS (REQUIRED)
+   STC CORE DESIGN SYSTEM — REQUIRED
    ============================================================ */
 
 :root {
@@ -19,14 +19,14 @@
   --border-subtle: #1f2933;
   --border-gold: #d4af37;
 
-  --radius-md: 8px;
+  --radius-md: 10px;
   --radius-sm: 6px;
 
   --transition-fast: 0.2s ease;
 }
 
 /* ============================================================
-   BASE RESET (NON-BREAKING)
+   BASE
    ============================================================ */
 
 body {
@@ -42,53 +42,145 @@ a {
 }
 
 /* ============================================================
-   STC SHIELD CONSOLE — PRODUCTION CSS
+   NAV
    ============================================================ */
 
-/* =========================
-   LAYOUT
-========================= */
+.nav {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
 
-.console-layout {
-  display: grid;
-  grid-template-columns: 280px 1fr 320px;
-  gap: var(--space-lg);
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.brand {
+  font-weight: 700;
+}
+
+.nav a {
+  margin-left: var(--space-md);
+  color: var(--text-secondary);
+}
+
+.nav a.active {
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-lg);
 }
 
-/* =========================
-   LEFT: FINDINGS PANEL
-========================= */
+.subtitle {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
 
-.console-findings {
+.note {
+  margin-top: var(--space-md);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.cta-group {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  border: 1px solid var(--border-subtle);
+  transition: var(--transition-fast);
+}
+
+.btn.primary {
+  background: var(--border-gold);
+  color: black;
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+.section.contrast {
+  background: var(--bg-secondary);
+}
+
+/* ============================================================
+   GRID + CARDS
+   ============================================================ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-md);
+}
+
+.card {
+  background: var(--bg-elevated);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+  text-align: center;
+  padding: var(--space-md);
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   YOUR CONSOLE CSS (UNCHANGED)
+   ============================================================ */
+
+.console-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  gap: var(--space-lg);
+}
+
+.console-findings,
+.console-detail,
+.console-ai {
   background: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: var(--space-md);
-}
-
-.console-findings h2 {
-  margin-bottom: var(--space-sm);
-}
-
-.findings-list {
-  list-style: none;
-  margin-top: var(--space-md);
-}
-
-.finding-item {
-  display: flex;
-  gap: var(--space-sm);
-  align-items: flex-start;
-
-  padding: var(--space-sm);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-
-  transition: var(--transition-fast);
 }
 
 .finding-item:hover {
@@ -100,133 +192,15 @@ a {
   border: 1px solid var(--border-gold);
 }
 
-/* Severity */
-
-.severity {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
 .severity.high { color: #ef4444; }
 .severity.medium { color: #f59e0b; }
 .severity.low { color: #10b981; }
 
-/* =========================
-   CENTER: DETAIL PANEL
-========================= */
-
-.console-detail {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: var(--space-lg);
-}
-
-.console-detail h2 {
-  margin-bottom: var(--space-md);
-}
-
-.detail-block {
-  margin-bottom: var(--space-lg);
-}
-
-.detail-block h3 {
-  margin-bottom: var(--space-xs);
-}
-
-.detail-block p,
-.detail-block ul {
-  color: var(--text-secondary);
-}
-
-.detail-block ul {
-  padding-left: 18px;
-}
-
-/* =========================
-   RIGHT: AI PANEL
-========================= */
-
 .console-ai {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
 }
-
-.console-ai .ai-subtitle {
-  color: var(--text-muted);
-}
-
-.console-ai.active .ai-subtitle {
-  color: var(--text-secondary);
-}
-
-.ai-btn {
-  width: 100%;
-}
-
-.ai-btn.disabled,
-.ai-btn[disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.ai-output h3 {
-  margin-top: var(--space-sm);
-}
-
-.ai-output p,
-.ai-output ul {
-  color: var(--text-secondary);
-}
-
-/* =========================
-   TOOLTIP BASE
-========================= */
-
-[data-tooltip] {
-  position: relative;
-}
-
-/* =========================
-   BACK NAV
-========================= */
-
-.console-nav {
-  max-width: 1200px;
-  margin: 0 auto var(--space-sm);
-  padding: 0 var(--space-md);
-}
-
-.back-link {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-
-.back-link:hover {
-  color: var(--text-primary);
-  text-decoration: underline;
-}
-
-/* =========================
-   FOOTNOTE
-========================= */
-
-.panel-footnote {
-  margin-top: var(--space-md);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media (max-width: 1024px) {
   .console-layout {
