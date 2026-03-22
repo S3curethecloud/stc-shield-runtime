@@ -2,148 +2,131 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>STC Shield — SecureTheCloud</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Production CSS -->
-  <link rel="stylesheet" href="/assets/css/shield.css" />
+  <title>STC Shield — Identity Attack Path Detection</title>
+
+  <meta
+    name="description"
+    content="STC Shield is a multi-cloud identity attack-path detection engine exposing how identities can be abused across AWS, Azure, and GCP."
+  />
+
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="
+      default-src 'self';
+      script-src 'self';
+      connect-src 'self' http://127.0.0.1:8000;
+      style-src 'self' 'unsafe-inline';
+    "
+  />
+
+  <link rel="stylesheet" href="/css/shield.css" />
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <div class="brand">🛡️ SecureTheCloud</div>
-      <div>
-        <a href="#">Home</a>
-        <a href="#" class="active">Shield</a>
-        <a href="#">AI</a>
-        <a href="#">Labs</a>
-        <a href="#">Consulting</a>
-      </div>
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">SecureTheCloud</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/shield" class="active">Shield</a>
+      <a href="/ai">AI</a>
+      <a href="/labs">Labs</a>
+      <a href="/consulting">Consulting</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <h1>STC Shield</h1>
+
+    <p class="subtitle">
+      Multi-cloud identity attack-path detection.
+      <br />
+      Model how attackers move through trust — before they do.
+    </p>
+
+    <div class="cta-group">
+      <a class="btn primary" href="/shield/preview/">
+        Launch Shield Console (Preview)
+      </a>
+
+      <a class="btn secondary btn-riskdna"
+         href="/shield/riskdna/"
+         aria-label="Launch RiskDNA Preview">
+        Launch RiskDNA (Preview)
+      </a>
+
+      <a class="btn secondary" href="/request-demo/">
+        Request Shield Demo
+      </a>
     </div>
-  </nav>
 
-  <main>
+    <p class="note muted">
+      Live identity risk view. Expired cloud sessions are blocked by design.
+    </p>
+  </section>
 
-    <!-- HERO -->
-    <section class="hero">
-      <h1>STC Shield</h1>
-      <p class="subtitle">
-        Multi-cloud identity attack-path detection. Model how attackers move through trust — before they do.
-      </p>
+  <section class="section">
+    <h2>Shield Console Preview</h2>
 
-      <div class="button-group">
-        <a class="btn primary" href="#">Launch Shield Console</a>
-        <a class="btn secondary btn-riskdna" href="#">Launch RiskDNA</a>
-        <a class="btn secondary" href="#">Request Demo</a>
-      </div>
+    <div class="grid">
 
-      <p class="muted" style="margin-top: 12px;">
-        Live identity risk view. Read-only by design. No automated remediation.
-      </p>
-    </section>
-
-    <!-- COPILOT -->
-    <section class="section contrast">
-      <h2>Copilot</h2>
-      <p class="subtitle">
-        Deterministic identity analysis with AI-assisted explanations — without modifying system state.
-      </p>
-
-      <div class="card">
-        <h3>Copilot Response</h3>
-        <p class="muted">
-          This identity path demonstrates cross-cloud trust traversal from Azure Entra ID into AWS via federated role with insufficient conditions.
-        </p>
-      </div>
-    </section>
-
-    <!-- SHIELD RISK -->
-    <section class="section">
-      <h2>Shield Attack Path Visualization</h2>
-      <p class="muted">Status: Active correlation from SIEM</p>
-
-      <div class="card" style="margin-top: 16px;">
-
-        <h3>Risk Score: 92</h3>
-
-        <div style="margin-top: 16px;">
-          <button class="btn secondary" onclick="toggleWhy()" aria-expanded="false" id="why-toggle">
-            Why this score?
-          </button>
-        </div>
-
-        <div id="why-box" class="card hidden" style="margin-top: 16px;">
-          <p><strong>After-hours activity</strong> : 02:14 AM refund <span style="float:right;">+25</span></p>
-          <p><strong>High-value transaction</strong> : $9,000 refund <span style="float:right;">+40</span></p>
-          <p><strong>New device fingerprint</strong> : Unrecognized browser <span style="float:right;">+27</span></p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FINDINGS -->
-    <section class="section contrast">
-      <h2>Shield Findings</h2>
-
-      <div class="grid">
+      <a href="/shield/preview/" class="card-link">
         <div class="card">
-          <h3>HIGH — Cross-account role escalation</h3>
-          <p>AWS IAM role reachable via Azure federation</p>
+          <h3>Operator Console</h3>
+          <p>Read-only identity risk visualization</p>
         </div>
+      </a>
 
+      <a href="/shield/preview/" class="card-link">
         <div class="card">
-          <h3>MEDIUM — Stale service account</h3>
-          <p>Unused GCP identity reachable from CI</p>
+          <h3>Attack Path Graph</h3>
+          <p>Model identity traversal across trust boundaries</p>
         </div>
+      </a>
 
-        <div class="card">
-          <h3>LOW — Over-permissive read</h3>
-          <p>Broad S3 access across multiple accounts</p>
-        </div>
-      </div>
+    </div>
+  </section>
 
-      <p class="muted" style="margin-top: 12px;">
-        Findings are computed deterministically from identity graphs.
-      </p>
-    </section>
+  <section class="section contrast ai-section">
+    <h2>AI-Augmented Reasoning</h2>
 
-    <!-- ARCHITECTURE -->
-    <section class="section">
-      <h2>STC Shield Architecture</h2>
+    <p class="subtitle">
+      Deterministic identity analysis with AI-assisted explanations —
+      without modifying system state.
+    </p>
 
-      <div class="card">
-        <p>
-          Identity ingestion → attack-path modeling → operator visualization → AI-augmented reasoning.
-        </p>
+    <ul>
+      <li>Explain identity attack paths using structured data</li>
+      <li>Trace risk propagation across cloud environments</li>
+      <li>Provide executive-ready reasoning with full provenance</li>
+    </ul>
+  </section>
 
-        <p class="muted" style="margin-top: 8px;">
-          AI explains results. Shield computes truth. System state is never modified.
-        </p>
-      </div>
-    </section>
+  <section class="section contrast">
+    <h2>STC Shield Architecture</h2>
 
-  </main>
+    <figure class="media-card">
+      <img
+        src="/diagrams/shield-architecture.svg"
+        alt="STC Shield architecture diagram"
+      />
+      <figcaption class="muted">
+        Identity ingestion → attack path modeling → visualization → AI reasoning.
+      </figcaption>
+    </figure>
+  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>Active datasets: Labs Inventory · SIEM Dataset · Shield Graph · Voice Intelligence</p>
-    <p class="muted">Deterministic · No Web · Audited</p>
-    <p>© SecureTheCloud — Multi-Cloud Architecture Intelligence Platform</p>
-  </footer>
+</main>
 
-  <!-- JS -->
-  <script>
-    function toggleWhy() {
-      const box = document.getElementById("why-box");
-      const btn = document.getElementById("why-toggle");
-
-      const isHidden = box.classList.toggle("hidden");
-      btn.setAttribute("aria-expanded", !isHidden);
-    }
-  </script>
+<footer class="footer">
+  <p>© SecureTheCloud • STC Shield</p>
+</footer>
 
 </body>
 </html>
