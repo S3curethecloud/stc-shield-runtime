@@ -1,257 +1,216 @@
 /* ============================================================
-   STC SHIELD — PRODUCTION CSS v1.0
-   File: /css/shield.css
+   STC SHIELD CONSOLE — PRODUCTION CSS
+   Token-aligned • Non-breaking • Enterprise UI
    ============================================================ */
 
-/* ============================================================
-   1. DESIGN TOKENS — LOCKED
-   ============================================================ */
+/* =========================
+   LAYOUT
+========================= */
 
-:root {
-  /* Colors */
-  --bg-primary: #0b0f14;
-  --bg-secondary: #0f1620;
-  --bg-elevated: #131a24;
+.console-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  gap: var(--space-lg);
 
-  --text-primary: #ffffff;
-  --text-secondary: #9ca3af;
-  --text-muted: rgba(255, 255, 255, 0.65);
-
-  --accent-gold: #d4af37;
-  --accent-gold-hover: #b8962e;
-
-  --accent-riskdna: #2dd4bf;
-  --accent-riskdna-soft: rgba(45, 212, 191, 0.12);
-
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-gold: rgba(212, 175, 55, 0.2);
-
-  /* Typography */
-  --font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-  /* Spacing */
-  --space-xs: 6px;
-  --space-sm: 10px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 40px;
-
-  /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-
-  /* Transitions */
-  --transition-fast: 120ms ease;
-}
-
-/* ============================================================
-   2. BASE RESET + LAYOUT
-   ============================================================ */
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: var(--font-base);
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  line-height: 1.6;
-}
-
-main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--space-xl) var(--space-md);
+  padding: var(--space-lg);
 }
 
-/* ============================================================
-   3. NAVIGATION
-   ============================================================ */
+/* =========================
+   LEFT: FINDINGS PANEL
+========================= */
 
-.nav {
+.console-findings {
   background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
   padding: var(--space-md);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.brand {
-  font-weight: 600;
-  color: var(--accent-gold);
-}
-
-.nav a {
-  margin-left: var(--space-lg);
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: var(--transition-fast);
-}
-
-.nav a:hover {
-  color: var(--text-primary);
-}
-
-.nav a.active {
-  color: var(--accent-gold);
-}
-
-/* ============================================================
-   4. HERO SECTION
-   ============================================================ */
-
-.hero {
-  text-align: left;
-  margin-bottom: var(--space-xl);
-}
-
-.hero h1 {
-  font-size: 2.5rem;
+.console-findings h2 {
   margin-bottom: var(--space-sm);
 }
 
-.subtitle {
-  color: var(--text-secondary);
-  max-width: 720px;
+/* Findings list */
+
+.findings-list {
+  list-style: none;
+  margin-top: var(--space-md);
+}
+
+.finding-item {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+
+  transition: var(--transition-fast);
+}
+
+.finding-item:hover {
+  background: var(--bg-elevated);
+}
+
+/* Selected state (IMPORTANT — keep visible but calm) */
+
+.finding-item.selected {
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid var(--border-gold);
+}
+
+/* Severity */
+
+.severity {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.severity.high {
+  color: #ef4444;
+}
+
+.severity.medium {
+  color: #f59e0b;
+}
+
+.severity.low {
+  color: #10b981;
+}
+
+/* =========================
+   CENTER: DETAIL PANEL
+========================= */
+
+.console-detail {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.console-detail h2 {
+  margin-bottom: var(--space-md);
+}
+
+.detail-block {
   margin-bottom: var(--space-lg);
 }
 
-/* ============================================================
-   5. BUTTONS
-   ============================================================ */
-
-.btn {
-  display: inline-block;
-  padding: 10px 16px;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  transition: var(--transition-fast);
+.detail-block h3 {
+  margin-bottom: var(--space-xs);
 }
 
-.btn.primary {
-  background: var(--accent-gold);
-  color: #000;
-  border: none;
+.detail-block p,
+.detail-block ul {
+  color: var(--text-secondary);
 }
 
-.btn.primary:hover {
-  background: var(--accent-gold-hover);
+.detail-block ul {
+  padding-left: 18px;
 }
 
-.btn.secondary {
-  border: 1px solid var(--border-subtle);
-  color: var(--text-primary);
-}
+/* =========================
+   RIGHT: AI PANEL
+========================= */
 
-.btn-riskdna {
-  border: 1px solid var(--accent-riskdna);
-  color: var(--accent-riskdna);
-}
-
-.btn-riskdna:hover {
-  background: var(--accent-riskdna-soft);
-}
-
-/* ============================================================
-   6. SECTIONS
-   ============================================================ */
-
-.section {
-  margin-top: var(--space-xl);
-}
-
-.section.contrast {
+.console-ai {
   background: var(--bg-secondary);
-  padding: var(--space-lg);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-}
-
-.section h2 {
-  margin-bottom: var(--space-sm);
-}
-
-.section p {
-  color: var(--text-secondary);
-}
-
-/* ============================================================
-   7. AI SECTION ALIGNMENT FIX
-   ============================================================ */
-
-.section.contrast > .subtitle {
-  margin-left: 0;
-  padding-left: 0;
-  text-align: left;
-  max-width: 720px;
-}
-
-/* ============================================================
-   8. GRID & CARDS
-   ============================================================ */
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-lg);
-}
-
-.card {
-  background: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: var(--space-lg);
-  transition: var(--transition-fast);
+  padding: var(--space-md);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
-.card:hover {
-  border-color: var(--border-gold);
-}
+/* AI inactive state */
 
-.card h3 {
-  margin-bottom: var(--space-sm);
-}
-
-.card p {
-  color: var(--text-secondary);
-}
-
-/* ============================================================
-   9. FOOTER
-   ============================================================ */
-
-.footer {
-  text-align: center;
-  margin-top: var(--space-xl);
-  padding: var(--space-lg);
-  border-top: 1px solid var(--border-subtle);
+.console-ai .ai-subtitle {
   color: var(--text-muted);
 }
 
-/* ============================================================
-   10. UTILITIES
-   ============================================================ */
+/* AI active state */
 
-.muted {
+.console-ai.active .ai-subtitle {
+  color: var(--text-secondary);
+}
+
+/* AI button */
+
+.ai-btn {
+  width: 100%;
+}
+
+/* Disabled state */
+
+.ai-btn.disabled,
+.ai-btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* AI output */
+
+.ai-output h3 {
+  margin-top: var(--space-sm);
+}
+
+.ai-output p,
+.ai-output ul {
+  color: var(--text-secondary);
+}
+
+/* =========================
+   TOOLTIP BASE (keeps your JS working)
+========================= */
+
+[data-tooltip] {
+  position: relative;
+}
+
+/* =========================
+   BACK NAV (you added earlier)
+========================= */
+
+.console-nav {
+  max-width: 1200px;
+  margin: 0 auto var(--space-sm);
+  padding: 0 var(--space-md);
+}
+
+.back-link {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+/* =========================
+   FOOTNOTE
+========================= */
+
+.panel-footnote {
+  margin-top: var(--space-md);
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
 
-.hidden {
-  display: none;
-}
+/* =========================
+   RESPONSIVE (minimal but clean)
+========================= */
 
-.center {
-  text-align: center;
+@media (max-width: 1024px) {
+  .console-layout {
+    grid-template-columns: 1fr;
+  }
 }
